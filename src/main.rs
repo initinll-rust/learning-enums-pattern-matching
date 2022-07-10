@@ -52,6 +52,29 @@ fn main() {
         7 => (),
         _ => (),
     }
+
+    // control flow with if let
+    let config_max = Some(3u8);
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+    }
+
+    let mut count = 0;
+    let mut coin1 = Coin::Dime;
+    let mut coin2 = Coin::Quarter(UsState::Alabama);
+
+    match coin1 {
+        Coin::Quarter(state) => println!("State quarter from {:?}!", state),
+        _ => count += 1,
+    }
+
+    //or use an if let and else expression     
+    if let Coin::Quarter(state) = coin2 {
+        println!("State quarter from {:?}!", state);
+    } else {
+        count += 1;
+    }
+
 }
 
 
